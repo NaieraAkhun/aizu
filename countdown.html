@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Countdown 🎉</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+height:100vh;
+
+overflow:hidden;
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+font-family:'Poppins',sans-serif;
+
+background:
+linear-gradient(
+180deg,
+#183A66,
+#2B5B97,
+#4C86D8,
+#D6AF36,
+#F4E6A0
+);
+
+}
+
+/* Stars */
+
+.star{
+
+position:absolute;
+
+width:4px;
+height:4px;
+
+background:white;
+
+border-radius:50%;
+
+box-shadow:
+0 0 10px white,
+0 0 20px gold;
+
+animation:twinkle 2s infinite alternate;
+
+}
+
+/* Balloons */
+
+.balloon{
+
+position:absolute;
+
+bottom:-120px;
+
+width:75px;
+height:95px;
+
+border-radius:50%;
+
+animation:float 18s linear infinite;
+
+}
+
+.balloon::after{
+
+content:"";
+
+position:absolute;
+
+width:2px;
+height:80px;
+
+background:white;
+
+left:50%;
+
+top:95px;
+
+}
+
+.b1{
+left:10%;
+background:#ff5a5f;
+}
+
+.b2{
+left:30%;
+background:#4D96FF;
+animation-duration:20s;
+}
+
+.b3{
+left:70%;
+background:#FFD166;
+animation-duration:22s;
+}
+
+.b4{
+left:90%;
+background:#9B5DE5;
+animation-duration:19s;
+}
+
+/* Countdown */
+
+#count{
+
+font-size:180px;
+
+font-family:'Baloo 2',cursive;
+
+color:white;
+
+text-shadow:
+0 0 25px gold,
+0 0 40px white;
+
+animation:zoom .8s;
+
+}
+
+p{
+
+margin-top:20px;
+
+font-size:30px;
+
+color:white;
+
+letter-spacing:2px;
+
+}
+
+/* Fireworks Canvas */
+
+canvas{
+
+position:fixed;
+
+left:0;
+top:0;
+
+pointer-events:none;
+
+}
+
+@keyframes zoom{
+
+0%{
+
+transform:scale(.2);
+
+opacity:0;
+
+}
+
+100%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+
+@keyframes twinkle{
+
+from{
+
+opacity:.3;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+@keyframes float{
+
+from{
+
+transform:translateY(0);
+
+}
+
+to{
+
+transform:translateY(-130vh);
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="balloon b1"></div>
+<div class="balloon b2"></div>
+<div class="balloon b3"></div>
+<div class="balloon b4"></div>
+
+<h1 id="count">3</h1>
+
+<p>Get Ready for the Celebration...</p>
+
+<audio id="music">
+<source src="audio/birthday.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+// Create Stars
+
+for(let i=0;i<150;i++){
+
+const s=document.createElement("div");
+
+s.className="star";
+
+s.style.left=Math.random()*100+"vw";
+
+s.style.top=Math.random()*100+"vh";
+
+s.style.animationDelay=Math.random()*3+"s";
+
+document.body.appendChild(s);
+
+}
+
+// Countdown
+
+const numbers=["3","2","1","🎉"];
+
+let index=0;
+
+const count=document.getElementById("count");
+
+const music=document.getElementById("music");
+
+const timer=setInterval(()=>{
+
+index++;
+
+if(index<numbers.length){
+
+count.innerHTML=numbers[index];
+
+count.style.animation="none";
+
+void count.offsetWidth;
+
+count.style.animation="zoom .8s";
+
+}
+
+if(numbers[index]=="🎉"){
+
+confetti({
+
+particleCount:300,
+
+spread:180,
+
+origin:{y:.6}
+
+});
+
+music.play();
+
+}
+
+if(index==numbers.length){
+
+clearInterval(timer);
+
+setTimeout(()=>{
+
+document.body.style.transition="1s";
+
+document.body.style.opacity="0";
+
+setTimeout(()=>{
+
+window.location.href="celebration.html";
+
+},1000);
+
+},2500);
+
+}
+
+},1500);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>💌 A Little Letter</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    width:100%;
+    min-height:100vh;
+
+    font-family:'Poppins',sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(255,255,255,.45),
+            transparent 28%
+        ),
+        linear-gradient(
+            180deg,
+            #0758c9 0%,
+            #328fe8 38%,
+            #8ed7f8 68%,
+            #ffe98a 100%
+        );
+
+    position:relative;
+
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+
+/* =========================================
+   GLITTER
+========================================= */
+
+#glitter{
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:1;
+}
+
+.sparkle{
+    position:absolute;
+
+    color:white;
+
+    text-shadow:
+        0 0 10px white;
+
+    animation:
+        twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+
+    from{
+        opacity:.2;
+        transform:scale(.5);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.4);
+    }
+}
+
+
+/* =========================================
+   CLOUDS
+========================================= */
+
+.cloud{
+    position:fixed;
+
+    width:220px;
+    height:60px;
+
+    background:
+        rgba(255,255,255,.72);
+
+    border-radius:60px;
+
+    filter:blur(2px);
+
+    z-index:2;
+
+    pointer-events:none;
+}
+
+.cloud::before,
+.cloud::after{
+    content:"";
+
+    position:absolute;
+
+    background:inherit;
+
+    border-radius:50%;
+}
+
+.cloud::before{
+    width:90px;
+    height:90px;
+
+    left:30px;
+    top:-40px;
+}
+
+.cloud::after{
+    width:110px;
+    height:110px;
+
+    right:25px;
+    top:-55px;
+}
+
+.cloud1{
+    top:14%;
+    left:-250px;
+
+    animation:
+        moveCloud 35s linear infinite;
+}
+
+.cloud2{
+    top:72%;
+    left:-300px;
+
+    animation:
+        moveCloud 45s linear infinite;
+}
+
+@keyframes moveCloud{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(1700px);
+    }
+}
+
+
+/* =========================================
+   DECORATIONS
+========================================= */
+
+.decoration{
+    position:fixed;
+
+    z-index:3;
+
+    pointer-events:none;
+}
+
+.moon{
+    left:30px;
+    top:25px;
+
+    font-size:55px;
+
+    animation:
+        float 3s ease-in-out infinite;
+}
+
+.star{
+    right:35px;
+    top:30px;
+
+    font-size:45px;
+
+    animation:
+        spin 3s ease-in-out infinite;
+}
+
+.teddy{
+    left:30px;
+    bottom:25px;
+
+    font-size:60px;
+
+    animation:
+        float 3.5s ease-in-out infinite;
+}
+
+.baby{
+    right:30px;
+    bottom:25px;
+
+    font-size:60px;
+
+    animation:
+        float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+@keyframes spin{
+
+    0%,100%{
+        transform:rotate(-10deg) scale(1);
+    }
+
+    50%{
+        transform:rotate(10deg) scale(1.15);
+    }
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.container{
+
+    position:relative;
+
+    z-index:10;
+
+    width:100%;
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    padding:
+        30px
+        20px
+        70px;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.subtitle{
+
+    color:white;
+
+    font-size:20px;
+
+    font-weight:600;
+
+    text-shadow:
+        0 3px 10px rgba(0,0,0,.25);
+
+    text-align:center;
+}
+
+.title{
+
+    font-family:'Baloo 2',cursive;
+
+    color:white;
+
+    font-size:56px;
+
+    font-weight:800;
+
+    line-height:1;
+
+    margin-top:-5px;
+
+    text-align:center;
+
+    text-shadow:
+        0 4px 0 #e5a900,
+        0 0 20px rgba(255,255,255,.8);
+}
+
+
+/* =========================================
+   ENVELOPE
+========================================= */
+
+.envelope-container{
+
+    position:relative;
+
+    width:400px;
+    height:270px;
+
+    margin-top:35px;
+
+    cursor:pointer;
+
+    transition:
+        transform .4s ease,
+        opacity .5s ease;
+
+    z-index:20;
+}
+
+.envelope-container:hover{
+
+    transform:
+        translateY(-6px)
+        scale(1.03);
+}
+
+
+/* Envelope body */
+
+.envelope{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff4b8,
+            #ffd95c
+        );
+
+    border-radius:10px;
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.25);
+
+    overflow:hidden;
+}
+
+
+/* Left fold */
+
+.envelope::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:0;
+    height:0;
+
+    border-left:
+        200px solid #f6c83d;
+
+    border-top:
+        135px solid transparent;
+}
+
+
+/* Right fold */
+
+.envelope::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:0;
+    bottom:0;
+
+    width:0;
+    height:0;
+
+    border-right:
+        200px solid #f6c83d;
+
+    border-top:
+        135px solid transparent;
+}
+
+
+/* =========================================
+   ENVELOPE FLAP
+========================================= */
+
+.flap{
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:150px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffe982,
+            #ffc928
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+
+    transform-origin:top;
+
+    transition:
+        transform 1s ease;
+
+    z-index:5;
+}
+
+
+/* =========================================
+   HEART SEAL
+========================================= */
+
+.seal{
+
+    position:absolute;
+
+    z-index:10;
+
+    left:50%;
+    top:105px;
+
+    transform:
+        translateX(-50%);
+
+    width:55px;
+    height:55px;
+
+    border-radius:50%;
+
+    background:#ff6377;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+
+    font-size:28px;
+
+    box-shadow:
+        0 5px 12px rgba(0,0,0,.2);
+
+    transition:.5s;
+}
+
+
+/* =========================================
+   ENVELOPE TEXT
+========================================= */
+
+.envelope-text{
+
+    position:absolute;
+
+    z-index:4;
+
+    left:0;
+    right:0;
+
+    bottom:25px;
+
+    text-align:center;
+
+    color:#8a6400;
+
+    font-family:'Baloo 2',cursive;
+
+    font-size:22px;
+
+    font-weight:700;
+}
+
+
+/* =========================================
+   OPEN ENVELOPE
+========================================= */
+
+.envelope-container.open .flap{
+
+    transform:
+        rotateX(180deg);
+}
+
+.envelope-container.open .seal{
+
+    opacity:0;
+
+    transform:
+        translateX(-50%)
+        scale(0);
+}
+
+
+/* =========================================
+   LETTER
+========================================= */
+
+.letter{
+
+    position:relative;
+
+    z-index:30;
+
+    width:min(750px,92vw);
+
+    margin-top:30px;
+
+    padding:
+        40px
+        50px
+        45px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf0,
+            #fff6c7
+        );
+
+    border-radius:10px;
+
+    border:
+        1px solid
+        rgba(170,120,20,.25);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.3);
+
+    opacity:0;
+
+    transform:
+        translateY(40px)
+        scale(.85);
+
+    pointer-events:none;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+
+    display:none;
+}
+
+
+/* Letter appears */
+
+.letter.show{
+
+    display:block;
+
+    opacity:1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    pointer-events:auto;
+}
+
+
+/* Letter decorations */
+
+.letter::before{
+
+    content:"✨";
+
+    position:absolute;
+
+    top:15px;
+    left:20px;
+
+    font-size:25px;
+}
+
+.letter::after{
+
+    content:"💙";
+
+    position:absolute;
+
+    bottom:15px;
+    right:20px;
+
+    font-size:25px;
+}
+
+
+/* =========================================
+   LETTER TITLE
+========================================= */
+
+.letter-title{
+
+    font-family:'Baloo 2',cursive;
+
+    font-size:38px;
+
+    color:#1858a8;
+
+    text-align:center;
+
+    margin-bottom:8px;
+}
+
+.letter-date{
+
+    text-align:right;
+
+    color:#777;
+
+    font-size:13px;
+
+    margin-bottom:25px;
+}
+
+
+/* =========================================
+   TYPING TEXT
+========================================= */
+
+.letter-text{
+
+    color:#354b63;
+
+    font-size:17px;
+
+    line-height:2;
+
+    min-height:250px;
+
+    white-space:normal;
+
+    word-wrap:break-word;
+}
+
+
+/* Cursor */
+
+.cursor{
+
+    display:inline-block;
+
+    width:2px;
+
+    height:20px;
+
+    background:#1858a8;
+
+    margin-left:3px;
+
+    vertical-align:middle;
+
+    animation:
+        blink .7s infinite;
+}
+
+@keyframes blink{
+
+    0%,50%{
+        opacity:1;
+    }
+
+    51%,100%{
+        opacity:0;
+    }
+}
+
+
+/* =========================================
+   END MESSAGE
+========================================= */
+
+.end-message{
+
+    margin-top:30px;
+
+    text-align:center;
+
+    font-family:'Baloo 2',cursive;
+
+    font-size:28px;
+
+    color:#1858a8;
+
+    opacity:0;
+
+    transform:translateY(15px);
+
+    transition:.8s;
+}
+
+.end-message.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:700px){
+
+    .container{
+        padding-top:20px;
+    }
+
+    .title{
+        font-size:42px;
+    }
+
+    .subtitle{
+        font-size:16px;
+    }
+
+    .envelope-container{
+
+        width:310px;
+        height:210px;
+
+        margin-top:30px;
+    }
+
+    .envelope::before{
+        border-left-width:155px;
+        border-top-width:105px;
+    }
+
+    .envelope::after{
+        border-right-width:155px;
+        border-top-width:105px;
+    }
+
+    .flap{
+        height:115px;
+    }
+
+    .seal{
+        top:80px;
+    }
+
+    .letter{
+
+        padding:
+            30px
+            25px
+            35px;
+    }
+
+    .letter-title{
+        font-size:30px;
+    }
+
+    .letter-text{
+        font-size:15px;
+        line-height:1.8;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+    <audio id="letterMusic" autoplay loop>
+    <source src="music/letter.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- =========================================
+     GLITTER
+========================================= -->
+
+<div id="glitter"></div>
+
+
+<!-- =========================================
+     CLOUDS
+========================================= -->
+
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+
+
+<!-- =========================================
+     DECORATIONS
+========================================= -->
+
+<div class="decoration moon">🌙</div>
+<div class="decoration star">⭐</div>
+<div class="decoration teddy">🧸</div>
+<div class="decoration baby">👶🏻</div>
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<div class="container">
+
+    <div class="subtitle">
+        ✨ Something Special For You ✨
+    </div>
+
+    <div class="title">
+        💌 A Little Letter 💌
+    </div>
+
+
+    <!-- =====================================
+         ENVELOPE
+    ====================================== -->
+
+    <div
+        class="envelope-container"
+        id="envelopeContainer"
+    >
+
+        <div class="envelope">
+
+            <div class="envelope-text">
+                Click the letter to open it 💌
+            </div>
+
+        </div>
+
+        <div class="flap"></div>
+
+        <div class="seal">
+            ❤️
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         LETTER
+    ====================================== -->
+
+    <div
+        class="letter"
+        id="letter"
+    >
+
+        <div class="letter-title">
+            To Our Little Prince 💙
+        </div>
+
+        <div class="letter-date">
+            With lots of love ✨
+        </div>
+
+        <div
+            class="letter-text"
+            id="letterText"
+        ></div>
+
+        <div
+            class="end-message"
+            id="endMessage"
+        >
+            💙 With all our love, forever and always 💙
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   CREATE GLITTER
+========================================= */
+
+const glitter =
+    document.getElementById("glitter");
+
+for(let i = 0; i < 120; i++){
+
+    const sparkle =
+        document.createElement("div");
+
+    sparkle.className =
+        "sparkle";
+
+    sparkle.innerHTML =
+        Math.random() > .5
+        ? "✦"
+        : "•";
+
+    sparkle.style.left =
+        Math.random() * 100 + "%";
+
+    sparkle.style.top =
+        Math.random() * 100 + "%";
+
+    sparkle.style.fontSize =
+        (5 + Math.random() * 12) + "px";
+
+    sparkle.style.animationDuration =
+        (1 + Math.random() * 3) + "s";
+
+    sparkle.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    glitter.appendChild(sparkle);
+}
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const envelopeContainer =
+    document.getElementById(
+        "envelopeContainer"
+    );
+
+const letter =
+    document.getElementById("letter");
+
+const letterText =
+    document.getElementById("letterText");
+
+const endMessage =
+    document.getElementById("endMessage");
+
+
+/* =========================================
+   YOUR LETTER
+========================================= */
+
+const message = `
+To our little prince,
+
+From the very first moment you came into our lives,
+you filled our hearts with a love that words can never
+completely describe.
+
+Every little smile, every tiny movement, every precious
+moment with you has become a beautiful memory that we
+will treasure forever.
+
+You are our little bundle of happiness, our sunshine,
+and the sweetest little blessing we could ever ask for.
+
+May your journey always be filled with love, laughter,
+beautiful dreams and endless happiness.
+
+May you always be surrounded by people who love you,
+care for you, and cheer for you through every step
+of your beautiful journey.
+
+No matter how big you grow, no matter where life takes
+you, you will always be our little prince.
+
+Keep smiling, keep dreaming, and keep shining.
+
+With all our love,
+
+Forever and always 💙
+`;
+
+
+/* =========================================
+   TYPEWRITER
+========================================= */
+
+let index = 0;
+
+function typeWriter(){
+
+    if(index < message.length){
+
+        const text =
+            message.substring(
+                0,
+                index + 1
+            );
+
+        letterText.innerHTML =
+            text
+            .replace(/\n/g,"<br>");
+
+        index++;
+
+        /*
+         * Typing speed
+         * Smaller number = faster
+         */
+
+        setTimeout(
+            typeWriter,
+            35
+        );
+
+        /*
+         * Automatically scroll down
+         * while typing
+         */
+
+        setTimeout(() => {
+
+            window.scrollTo({
+                top:document.body.scrollHeight,
+                behavior:"smooth"
+            });
+
+        },40);
+
+    }
+
+    else{
+
+        /*
+         * Typing finished
+         */
+
+        setTimeout(() => {
+
+            endMessage.classList.add(
+                "show"
+            );
+
+            window.scrollTo({
+                top:document.body.scrollHeight,
+                behavior:"smooth"
+            });
+
+        },700);
+
+    }
+}
+
+
+/* =========================================
+   OPEN ENVELOPE
+========================================= */
+
+envelopeContainer.addEventListener(
+    "click",
+    function(){
+
+        if(
+            envelopeContainer.classList.contains(
+                "open"
+            )
+        ){
+            return;
+        }
+
+        /* Open flap */
+
+        envelopeContainer.classList.add(
+            "open"
+        );
+
+
+        /* Wait for opening animation */
+
+        setTimeout(() => {
+
+            envelopeContainer.style.opacity =
+                "0";
+
+            setTimeout(() => {
+
+                envelopeContainer.style.display =
+                    "none";
+
+
+                /* Show letter */
+
+                letter.classList.add(
+                    "show"
+                );
+
+
+                /* Start typing */
+
+                setTimeout(() => {
+
+                    typeWriter();
+
+                },600);
+
+            },500);
+
+        },800);
+
+    }
+);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🎉 Happy 1st Birthday Aizan 🎂</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<style>
+
+/*==============================
+RESET
+==============================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+}
+
+/*==============================
+BACKGROUND
+==============================*/
+
+body{
+
+    background:linear-gradient(180deg,#1b4fd8,#4da3ff,#9ddcff);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+
+}
+
+/*==============================
+BACKGROUND GLOW
+==============================*/
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+width:700px;
+
+height:700px;
+
+background:rgba(255,255,255,.18);
+
+border-radius:50%;
+
+filter:blur(120px);
+
+animation:pulse 6s infinite alternate;
+
+}
+
+@keyframes pulse{
+
+from{
+
+transform:scale(.9);
+
+}
+
+to{
+
+transform:scale(1.2);
+
+}
+
+}
+
+/*==============================
+STARS
+==============================*/
+
+#stars{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+overflow:hidden;
+
+z-index:0;
+
+}
+
+.star{
+
+position:absolute;
+
+width:3px;
+
+height:3px;
+
+background:white;
+
+border-radius:50%;
+
+animation:twinkle 2s infinite alternate;
+
+}
+
+@keyframes twinkle{
+
+0%{
+
+opacity:.2;
+
+transform:scale(.5);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:scale(1.5);
+
+}
+
+}
+
+/*==============================
+FLOATING EMOJIS
+==============================*/
+
+#confettiContainer{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+pointer-events:none;
+
+overflow:hidden;
+
+}
+
+.confetti{
+
+position:absolute;
+
+animation:fall linear forwards;
+
+}
+
+@keyframes fall{
+
+0%{
+
+transform:translateY(-100px) rotate(0deg);
+
+}
+
+100%{
+
+transform:translateY(120vh) rotate(720deg);
+
+}
+
+}
+
+/*==============================
+GLASS CARD
+==============================*/
+
+.glass{
+
+position:relative;
+
+width:90%;
+
+max-width:820px;
+
+padding:22px 30px;
+
+text-align:center;
+
+background:rgba(255,255,255,.16);
+
+backdrop-filter:blur(14px);
+
+border-radius:30px;
+
+border:1px solid rgba(255,255,255,.3);
+
+box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+z-index:5;
+
+}
+
+/*==============================
+TEXT
+==============================*/
+
+.subtitle{
+
+font-size:22px;
+
+font-weight:600;
+
+color:white;
+
+margin-bottom:10px;
+
+}
+
+.title{
+
+font-family:'Baloo 2',cursive;
+
+font-size:58px;
+
+color:white;
+
+line-height:1;
+
+margin-bottom:5px;
+
+}
+
+.name{
+
+font-size:34px;
+
+font-weight:bold;
+
+color:#ffd54f;
+
+margin-bottom:12px;
+
+}
+
+.message{
+
+font-size:20px;
+
+line-height:1.5;
+
+color:white;
+
+margin-bottom:10px;
+
+}
+
+/*==============================
+CAKE
+==============================*/
+
+.cake{
+
+position:relative;
+
+width:180px;
+
+height:180px;
+
+margin:10px auto;
+
+transform:scale(.65);
+
+}
+
+.plate{
+
+position:absolute;
+
+bottom:0;
+
+width:240px;
+
+height:20px;
+
+left:-30px;
+
+background:#ddd;
+
+border-radius:50px;
+
+}
+
+.layer{
+
+position:absolute;
+
+left:50%;
+
+transform:translateX(-50%);
+
+border-radius:18px;
+
+}
+
+.bottom{
+
+bottom:20px;
+
+width:200px;
+
+height:90px;
+
+background:#ffc285;
+
+}
+
+.middle{
+
+bottom:100px;
+
+width:150px;
+
+height:70px;
+
+background:#ffa86c;
+
+}
+
+.top{
+
+bottom:160px;
+
+width:110px;
+
+height:50px;
+
+background:#ff9360;
+
+}
+
+.icing{
+
+position:absolute;
+
+bottom:205px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:120px;
+
+height:18px;
+
+background:white;
+
+border-radius:20px;
+
+}
+
+.candle{
+
+position:absolute;
+
+left:50%;
+
+transform:translateX(-50%);
+
+bottom:223px;
+
+width:10px;
+
+height:65px;
+
+background:#3f8cff;
+
+border-radius:8px;
+
+}
+
+.flame{
+
+position:absolute;
+
+left:50%;
+
+transform:translateX(-50%);
+
+bottom:285px;
+
+width:18px;
+
+height:28px;
+
+background:gold;
+
+border-radius:50%;
+
+box-shadow:0 0 20px gold;
+
+animation:flicker .5s infinite alternate;
+
+}
+
+@keyframes flicker{
+
+from{
+
+transform:translateX(-50%) scale(.95);
+
+}
+
+to{
+
+transform:translateX(-50%) scale(1.1);
+
+}
+
+}
+
+@keyframes smoke{
+
+0%{
+
+opacity:1;
+
+transform:translateX(-50%) translateY(0);
+
+}
+
+100%{
+
+opacity:0;
+
+transform:translateX(-50%) translateY(-60px) scale(2);
+
+}
+
+}
+/*==============================
+BUTTONS
+==============================*/
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:15px;
+    flex-wrap:wrap;
+}
+
+button{
+    padding:14px 28px;
+    border:none;
+    border-radius:40px;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-4px) scale(1.05);
+}
+
+#celebrateBtn{
+    background:#ffca28;
+    color:#222;
+}
+
+#nextBtn{
+    background:#ff6f61;
+    color:white;
+}
+
+.music{
+    position:absolute;
+    top:20px;
+    right:20px;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    border:none;
+    font-size:24px;
+    background:white;
+    color:#333;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.25);
+    z-index:100;
+}
+
+/*==============================
+RESPONSIVE
+==============================*/
+
+@media(max-width:768px){
+
+.title{
+    font-size:42px;
+}
+
+.name{
+    font-size:26px;
+}
+
+.message{
+    font-size:17px;
+}
+
+.glass{
+    width:95%;
+    padding:18px;
+}
+
+.cake{
+    transform:scale(.55);
+}
+
+button{
+    font-size:16px;
+    padding:12px 22px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<div id="confettiContainer"></div>
+
+<button class="music" id="musicBtn">
+     🎵
+</button>
+
+<div class="glass">
+ 
+
+
+<div class="title">
+Happy 1st Birthday
+</div>
+
+<div class="name">
+Little Prince Aizan👑
+</div>
+
+<div class="message">
+<br><br>
+</div>
+
+<div class="cake">
+
+<div class="plate"></div>
+
+<div class="layer bottom"></div>
+
+<div class="layer middle"></div>
+
+<div class="layer top"></div>
+
+<div class="icing"></div>
+
+<div class="candle"></div>
+
+<div class="flame"></div>
+
+</div>
+
+<div class="buttons">
+
+<button id="celebrateBtn">
+🎂 Celebrate
+</button>
+
+<button id="nextBtn">
+📸 See My Memories
+</button>
+
+</div>
+
+</div>
+
+
+<audio id="birthdayMusic" autoplay loop>
+    <source src="music/birthday.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    /*==============================
+CREATE STARS
+==============================*/
+
+const stars = document.getElementById("stars");
+
+for(let i=0;i<180;i++){
+
+    const star=document.createElement("div");
+
+    star.className="star";
+
+    star.style.left=Math.random()*100+"%";
+
+    star.style.top=Math.random()*100+"%";
+
+    star.style.animationDuration=(1+Math.random()*3)+"s";
+
+    stars.appendChild(star);
+
+}
+
+/*==============================
+FALLING EMOJIS
+==============================*/
+
+const emojis=["🎉","🎊","✨","⭐","🎁","🎈","💖"];
+
+const container=document.getElementById("confettiContainer");
+
+function fallingEmoji(){
+
+    const e=document.createElement("div");
+
+    e.className="confetti";
+
+    e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+
+    e.style.left=Math.random()*100+"vw";
+
+    e.style.fontSize=(20+Math.random()*25)+"px";
+
+    e.style.animationDuration=(5+Math.random()*5)+"s";
+
+    container.appendChild(e);
+
+    setTimeout(()=>{
+
+        e.remove();
+
+    },10000);
+
+}
+
+setInterval(fallingEmoji,250);
+
+/*==============================
+MUSIC
+==============================*/
+
+const music=document.getElementById("birthdayMusic");
+
+const musicBtn=document.getElementById("musicBtn");
+
+let playing=false;
+
+musicBtn.onclick=function(){
+
+    if(!playing){
+
+        music.play();
+
+        playing=true;
+
+        musicBtn.innerHTML="🔊";
+
+    }
+
+    else{
+
+        music.pause();
+
+        playing=false;
+
+        musicBtn.innerHTML="🎵";
+
+    }
+
+};
+
+/*==============================
+CELEBRATE BUTTON
+==============================*/
+
+const celebrate=document.getElementById("celebrateBtn");
+
+const flame=document.querySelector(".flame");
+
+const cake=document.querySelector(".cake");
+
+celebrate.onclick=function(){
+
+    // Firework Burst
+    confetti({
+        particleCount:350,
+        spread:180,
+        origin:{y:0.6}
+    });
+
+    // Side Fireworks
+    confetti({
+        particleCount:120,
+        angle:60,
+        spread:70,
+        origin:{x:0}
+    });
+
+    confetti({
+        particleCount:120,
+        angle:120,
+        spread:70,
+        origin:{x:1}
+    });
+
+    // Blow Candle
+    flame.style.animation="none";
+    flame.style.opacity="0";
+
+    // Smoke
+    const smoke=document.createElement("div");
+
+    smoke.innerHTML="💨";
+
+    smoke.style.position="absolute";
+
+    smoke.style.left="50%";
+
+    smoke.style.bottom="285px";
+
+    smoke.style.transform="translateX(-50%)";
+
+    smoke.style.fontSize="28px";
+
+    smoke.style.animation="smoke 2s forwards";
+
+    cake.appendChild(smoke);
+
+    celebrate.innerHTML="🎉 Celebrated!";
+
+    celebrate.disabled=true;
+
+};
+
+/*==============================
+AUTO FIREWORKS
+==============================*/
+
+setInterval(()=>{
+
+confetti({
+
+particleCount:80,
+
+spread:60,
+
+origin:{x:0,y:0.4}
+
+});
+
+confetti({
+
+particleCount:80,
+
+spread:60,
+
+origin:{x:1,y:0.4}
+
+});
+
+},4000);
+
+/*==============================
+NEXT PAGE
+==============================*/
+
+document.getElementById("nextBtn").onclick=function(){
+
+window.location.href="gallery_target_style.html";
+
+};
+
+</script>
+
+</body>
+
+</html>
+
